@@ -1,4 +1,6 @@
-patika-hw05# Beşinci hafta ödevi teslim tarihi : 14 Eylül Salı - Saat 23:00
+**Deadline of patika-hw05**
+
+Beşinci hafta ödevi teslim tarihi : 14 Eylül Salı - Saat 23:00
 
 ## School Management Project - 5th Homework
 ## Summary
