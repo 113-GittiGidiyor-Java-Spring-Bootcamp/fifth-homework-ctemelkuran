@@ -2,11 +2,13 @@ package dev.patika.schoolmanagementhw05.service;
 
 import dev.patika.schoolmanagementhw05.dto.CourseDTO;
 import dev.patika.schoolmanagementhw05.entity.Course;
+import dev.patika.schoolmanagementhw05.entity.Instructor;
 import dev.patika.schoolmanagementhw05.entity.Student;
 import dev.patika.schoolmanagementhw05.exceptions.CourseIsAlreadyExistException;
 import dev.patika.schoolmanagementhw05.exceptions.StudentNumberForOneCourseExceededException;
 import dev.patika.schoolmanagementhw05.mappers.CourseMapper;
 import dev.patika.schoolmanagementhw05.repository.CourseRepository;
+import dev.patika.schoolmanagementhw05.repository.InstructorRepository;
 import dev.patika.schoolmanagementhw05.repository.StudentRepository;
 import dev.patika.schoolmanagementhw05.util.ErrorMessageConstants;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ public class CourseService {
 
     private final CourseRepository courseRepository;
     private final StudentRepository studentRepository;
+    private final InstructorRepository instructorRepository;
     @Autowired
     private CourseMapper courseMapper;
 
@@ -113,5 +116,11 @@ public class CourseService {
             studentList.add(studentRepository.findById(studentId).get());
         }
         return studentList;
+    }
+
+    public Instructor findInstructorById(long instructorId){
+        Instructor foundInstructor = instructorRepository.findById(instructorId)
+                .orElseThrow(() -> new RuntimeException(String.format("Instructor with ID: %d could not foud!", instructorId)));
+        return foundInstructor;
     }
 }

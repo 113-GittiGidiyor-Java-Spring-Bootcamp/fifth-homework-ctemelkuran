@@ -29,11 +29,11 @@ public abstract class CourseMapper {
      */
     // target is the students attribute in Course entity
     @Mapping(target = "students", expression = "java(courseService.findAllStudentsByStudentId(courseDTO.getEnrolledStudentIds()))")
-    @Mapping(target = "instructor", expression = "java(courseDTO.getInstructorId())")
+    @Mapping(target = "instructor", expression = "java(courseService.findInstructorById(courseDTO.getInstructorId()))")
     public abstract Course mapFromCourseDTOtoCourse(CourseDTO courseDTO);
 
-    public abstract CourseDTO mapFromCourseToCourseDTO(Course course);
+ /*   @Mapping(target = "instructorId", expression = "java(course.getCourseInstructor().getId())")
+    @Mapping(target = "studentIds", expression = "java(studentService.findAllCourseStudentIdsByList(course.getCourseStudents()))")
+*/    public abstract CourseDTO mapFromCourseToCourseDTO(Course course);
 
- /*   @Mapping(target = "courseInstructor", expression = "java((instructorService.getCourseInstructorById(courseDTO.getInstructorId())))")
-    @Mapping(target = "courseStudents",expression = "java(studentService.findAllCourseStudentsById(courseDTO.getStudentIds()))")*/
-}
+ }
